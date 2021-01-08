@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <title>Kleider</title>
+  <meta charset="utf-8">
+  <style>
+    .sidenav {
+      height: 100%;
+      width: 0;
+      max-width: 205px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 70px;
+
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 100px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: -160px;
+      font-size: 50px;
+      margin-left: 50px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {
+        padding-top: 15px;
+      }
+
+      .sidenav a {
+        font-size: 18px;
+      }
+    }
+
+    .sidenav a,
+    .dropdown-btn {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 27px;
+      color: #818181;
+      display: block;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* On mouse-over */
+    .sidenav a:hover,
+    .dropdown-btn:hover {
+      color: #f1f1f1;
+    }
+
+    /* Add an active class to the active dropdown button */
+    .active {
+      background-color: #818181;
+      color: white;
+    }
+
+    /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+    .dropdown-container {
+      display: none;
+      background-color: #262626;
+      padding-left: 8px;
+    }
+
+    /* Optional: Style the caret down icon */
+    .fa-caret-down {
+      float: right;
+      padding-right: 8px;
+    }
+
+    .box {
+      position: relative;
+      width: 500px;
+      height: 700px;
+      background-size: 100% 100%;
+    }
+
+    .box img {
+      width: 500px;
+      height: 700px;
+    }
+
+    .box:hover .details {
+      display: block;
+    }
+
+    .text {
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      line-height: 45px;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .blank {
+      float: left;
+      width: 500px;
+      height: 50px;
+    }
+
+    .h3 {
+      float: left;
+      width: 500px;
+      text-align: center;
+      color: #ffffff;
+      font-size: 35px;
+    }
+
+    .details {
+      color: #FFFFFF;
+      display: none;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    #back {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      z-index: 99;
+      border: none;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    .img {
+      vertical-align: middle;
+      width: 1500px;
+      height: 550px;
+    }
+
+    /* Slideshow container */
+    .slideshow-container {
+      max-width: 1500px;
+      position: relative;
+      margin: auto;
+    }
+
+    /* Fading animation */
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 1.5s;
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @-webkit-keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .cart {
+      float: right;
+    }
+
+    .member {
+      float: right;
+      margin-top: 12px;
+    }
+
+    .wrap {
+      float: right;
+      margin-right: 90px;
+      margin-top: 16px;
+    }
+
+    .topic {
+      float: left;
+      margin-left: 575px;
+    }
+
+    .open {
+      float: left;
+    }
+
+    .search-bar {
+      height: 50px;
+      font-size: large;
+    }
+
+    .search-btn {
+      outline: none;
+      position: absolute;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    /* Full-width input fields */
+    input[type=text],
+    input[type=password] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .button-1 {
+      background-color: gray;
+      color: white;
+      padding: 0px 0px;
+      margin: 15px 0;
+      border: none;
+      cursor: pointer;
+      height: 50px;
+      width: 50px;
+    }
+
+    .button-1:hover {
+      opacity: 0.8;
+    }
+
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+      width: auto;
+      padding: 10px 18px;
+      background-color: #f44336;
+    }
+
+    /* Center the image and position the close button */
+    .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+      position: relative;
+    }
+
+    .container-1 {
+      padding: 16px;
+    }
+
+    span.psw {
+      float: right;
+      padding-top: 16px;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      justify-content: center;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 1500px;
+      height: 100%;
+      overflow: hidden;
+      background-color: transparent;
+      padding-top: 60px;
+      padding-left: 170px;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto 15% auto;
+      /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid gray;
+      width: 35%;
+    }
+
+    /* The Close Button (x) */
+    .close {
+      position: absolute;
+      right: 25px;
+      top: 0;
+      color: #000;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: red;
+      cursor: pointer;
+    }
+
+    /* Add Zoom Animation */
+    .animate {
+      -webkit-animation: animatezoom 0.6s;
+      animation: animatezoom 0.6s
+    }
+
+    @-webkit-keyframes animatezoom {
+      from {
+        -webkit-transform: scale(0)
+      }
+
+      to {
+        -webkit-transform: scale(1)
+      }
+    }
+
+    @keyframes animatezoom {
+      from {
+        transform: scale(0)
+      }
+
+      to {
+        transform: scale(1)
+      }
+    }
+
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+      span.psw {
+        display: block;
+        float: none;
+      }
+
+      .cancelbtn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <input type="image" src="img/back.jpg" height="50px" width="50px" onclick="topFunction()" id="back">
+  <div style="width: 100%; height: 100px;">
+    <div class="cart" style="padding-top: 26px; padding-left: 10px;"><a href="checkout.html"><input type="image"
+          src="img/shop.png" height="50px" width="50px"></a></div>
+    <div class="member"> <button class="button-1" onclick="document.getElementById('id01').style.display='block'"><img
+          src="img/member.png" height="50px" width="50px">
+      </button></div>
+
+    <div id="id01" class="modal">
+
+      <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close"
+            title="Close Modal">&times;</span>
+          <img src="img/member.png" height="200px" alt="Avatar" class="avatar" style="border-radius: 50%;">
+        </div>
+
+        <div class="container-1">
+          <label for="uname"><b>帳號</b></label>
+          <input type="text" placeholder="輸入帳號" name="uname" required>
+
+          <label for="psw"><b>密碼</b></label>
+          <input type="password" placeholder="輸入密碼" name="psw" required>
+          <button class="button-1" type="submit" style="width: 100px;"><a href="register.html"
+              style="color: white;text-decoration:none;">註冊</a></button>
+          <button class="button-1" type="submit" style="width: 100px;margin-left: 90px;">登入</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> 記住我
+          </label>
+        </div>
+      </form>
+    </div>
+    <div class="wrap">
+      <div class="search">
+        <input class="search-bar" type="text" name="search" id="search" placeholder="Search...">
+        <button class="search-btn">
+          <input type="image" src="img/search.png" height="40px" width="40px">
+        </button>
+      </div>
+    </div>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="index.html">首頁</a>
+      <button class="dropdown-btn">商品一覽
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+        <a href="top coat.html">上裝</a>
+        <a href="bottom.html">下裝</a>
+      </div>
+      <a href="contact.html">關於我們</a>
+      <a href="member.html">會員中心</a>
+      <a href="#">留言板</a>
+    </div>
+    <span class="open" style="font-size:50px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <div class="topic"><img src="img/title.png" height="100px"></div>
+  </div>
+  <div class="all" style="background-color: #DDFFF7;border-radius: 10px;padding-bottom: 30px;">
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <img class="img" src="img/gg4.png">
+      </div>
+
+      <div class="mySlides fade">
+        <img class="img" src="img/gg3.jpg">
+      </div>
+
+      <div class="mySlides fade">
+        <img class="img" src="img/gg1.png">
+      </div>
+    </div>
+    <div align="center"><img src="img/char.jpg" style="width: 1500px;height: 1200px;"></div>
+    <div align="center"><img src="img/rmsp.png" style="padding-top: 10px;padding-bottom: 10px;"></div>
+    <div align="center">
+      <div style="width: 1700px; position: relative;">
+        <table>
+          <tr>
+            <td>
+              <div class="box">
+                <a href="tc2.html">
+                  <img src="img/rmsp1.jpg" />
+                  <div class="text">
+                    <div class="blank">
+                    </div>
+                    <div class="h3">
+                      <h3>極地冰花長袖T恤</h3>
+                      <p class="details">
+                        經典百搭圓領設計
+                      </p>
+                      <p class="details">
+                        原創搶眼冰花印花
+                      </p>
+                      <p class="details">
+                        簡約直筒袖口設計
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </td>
+            <td>
+              <div class="box">
+                <a href="tc1.html">
+                  <img src="img/rmsp2.jpg" />
+                  <div class="text">
+                    <div class="blank">
+                    </div>
+                    <div class="h3">
+                      <h3>加厚嘻哈連帽衛衣</h3>
+                      <p class="details">
+                        機能風連帽設計
+                      </p>
+                      <p class="details">
+                        “反戰”主題英文繡花
+                      </p>
+                      <p class="details">
+                        抽繩插色口袋
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </td>
+            <td>
+              <div class="box">
+                <a href="b4.html">
+                  <img src="img/rmsp3.jpg" />
+                  <div class="text">
+                    <div class="blank">
+                    </div>
+                    <div class="h3">
+                      <h3>加絨束腳百搭衛褲</h3>
+                      <p class="details">
+                        加絨款秋冬適宜
+                      </p>
+                      <p class="details">
+                        紐扣束腳設計
+                      </p>
+                      <p class="details">
+                        街頭風潮流前線
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <footer align="center" style="background-color: #004643; color: #FDFFFC;border-radius: 10px;">
+    <p style="padding-top: 15px;">Copyright@2020,資訊管理學係第三十二組,Kleider</p>
+    <p style="padding-bottom: 15px;">所有店鋪和商品資料僅使用於第三十二組109-1學期期末專案</p>
+  </footer>
+
+  <script>
+    //廣告自動播放的部分
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1
+      }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 2000); // 2秒變動一次
+    }
+
+    //back to top 按鈕的部分
+    var mybutton = document.getElementById("back");
+    window.onscroll = function () {
+      scrollFunction()
+    };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    //选单
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+
+    // Get the modal
+    var modal = document.getElementById('id01');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+
+</html>
