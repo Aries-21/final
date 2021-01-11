@@ -2,7 +2,9 @@
 <html>
 <title>極地冰花長袖T恤</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://kit.fontawesome.com/05f083f1a4.js" crossorigin="anonymous"></script>
+
+<!--load all styles -->
 <style>
   .rat {
     max-width: 800px;
@@ -275,22 +277,6 @@
     padding-right: 8px;
   }
 
-
-  .cart {
-    float: right;
-  }
-
-  .member {
-    float: right;
-    margin-top: 12px;
-  }
-
-  .wrap {
-    float: right;
-    margin-right: 90px;
-    margin-top: 16px;
-  }
-
   .search-bar {
     height: 50px;
     font-size: large;
@@ -298,16 +284,11 @@
 
   .search-btn {
     outline: none;
-    position: absolute;
     cursor: pointer;
-    margin-top: 8px;
   }
 
   .select {
-    width: 200px;
-    margin-left: 100px;
-    margin-bottom: 100px;
-    margin-top: 10px;
+    padding-left: 8%;
   }
 
   .a {
@@ -444,11 +425,6 @@
     }
   }
 
-  .topic {
-    float: left;
-    margin-left: 575px;
-  }
-
   .open {
     float: left;
   }
@@ -491,64 +467,73 @@
 
 <body>
   <input type="image" src="img/back.jpg" height="50px" width="50px" onclick="topFunction()" id="back">
-  <div style="width: 100%; height: 100px;">
-    <div class="cart" style="padding-top: 26px; padding-left: 10px;"><a href="checkout.html"><input type="image"
-          src="img/shop.png" height="50px" width="50px"></a></div>
-    <div class="member"> <button class="button-1" onclick="document.getElementById('id01').style.display='block'"><img
-          src="img/member.png" height="50px" width="50px">
-      </button></div>
-    <div id="id01" class="modal">
-
-      <form class="modal-content animate" action="/action_page.php" method="post">
-        <div class="imgcontainer">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close"
-            title="Close Modal">&times;</span>
-          <img src="img/member.png" height="200px" alt="Avatar" class="avatar" style="border-radius: 50%;">
-        </div>
-
-        <div class="container-1">
-          <label for="uname"><b>帳號</b></label>
-          <input type="text" placeholder="輸入帳號" name="uname" required>
-
-          <label for="psw"><b>密碼</b></label>
-          <input type="password" placeholder="輸入密碼" name="psw" required>
-          <button class="button-1" type="submit" style="width: 100px;"><a href="register.html"
-              style="color: white;text-decoration:none;">註冊</a></button>
-          <button class="button-1" type="submit" style="width: 100px;margin-left: 90px;">登入</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> 記住我
-          </label>
-        </div>
-      </form>
-    </div>
-    <div class="wrap">
-      <div class="search">
-        <input class="search-bar" type="text" name="search" id="search" placeholder="Search...">
-        <button class="search-btn">
-          <input type="image" src="img/search.png" height="40px" width="40px">
+  <div style="display: flex;justify-content: space-between;align-items: center;">
+    <div>
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">首頁</a>
+        <button class="dropdown-btn">商品一覽
+          <i class="fa fa-caret-down"></i>
         </button>
+        <div class="dropdown-container">
+          <a href="top coat.html">上裝</a>
+          <a href="bottom.html">下裝</a>
+        </div>
+        <a href="contact.html">關於我們</a>
+        <a href="member.html">會員中心</a>
+        <a href="#">留言板</a>
+      </div>
+      <span class="open" style="font-size:50px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    </div>
+    <div class="topic" style="padding-left: 10%;height: 100px;"><img src="img/title.png" height="100px"></div>
+    <div style="display: flex;align-items: center;">
+      <div class="wrap">
+        <div class="search" style="display: flex;align-items: center;">
+          <input class="search-bar" type="text" name="search" id="search" placeholder="Search...">
+          <button class="search-btn" style="padding: 3px;">
+            <input type="image" src="img/search.png" height="40px" width="40px">
+          </button>
+        </div>
+      </div>
+      <div style="display: flex;width: 150px;justify-content: center;">
+        <div class="member"> <button class="button-1" onclick="document.getElementById('id01').style.display='block'"
+            style="border-radius: 50%;"><i class="fas fa-user"></i>
+          </button></div>
+        <div id="id01" class="modal">
+          <form class="modal-content animate" action="/action_page.php" method="post">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+              <img src="img/member.png" height="200px" alt="Avatar" class="avatar" style="border-radius: 50%;">
+            </div>
+
+            <div class="container-1">
+              <label for="uname"><b>帳號</b></label>
+              <input type="text" placeholder="輸入帳號" name="uname" required>
+
+              <label for="psw"><b>密碼</b></label>
+              <input type="password" placeholder="輸入密碼" name="psw" required>
+              <button class="button-1" type="submit" style="width: 100px;"><a href="register.html"
+                  style="color: white;text-decoration:none;">註冊</a></button>
+              <button class="button-1" type="submit" style="width: 100px;margin-left: 90px;">登入</button>
+              <label>
+                <input type="checkbox" checked="checked" name="remember"> 記住我
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="cart" style="padding-top: 27px; padding-left: 10px;">
+          <a href=" checkout.html"
+            style="background-color: gray;color: white;border: none;cursor: pointer;padding: 15px;border-radius: 50%;"><i
+              class="
+          fas fa-shopping-cart"></i></a></div>
       </div>
     </div>
-    <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <a href="index.html">首頁</a>
-      <button class="dropdown-btn">商品一覽
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-container">
-        <a href="top coat.html">上裝</a>
-        <a href="bottom.html">下裝</a>
-      </div>
-      <a href="contact.html">關於我們</a>
-      <a href="member.html">會員中心</a>
-      <a href="#">留言板</a>
-    </div>
-    <span class="open" style="font-size:50px;cursor:pointer" onclick="openNav()">&#9776;</span>
-    <div class="topic"><img src="img/title.png" height="100px"></div>
   </div>
-  <div class="all" style="background-color: #DDFFF7;padding-top: 30px; border-radius: 10px;padding-bottom: 30px;">
-    <div class="a">
-      <div style="padding-left: 300px;">
+  <div class="all"
+    style="background-color: #DDFFF7;padding-top: 30px; border-radius: 10px;padding-bottom: 30px;width: 100%;">
+    <div class="a" style="padding-left: 15%;">
+      <div>
         <div class="container">
           <div class="mySlides">
             <div class="numbertext">1 / 3</div>
@@ -737,12 +722,12 @@
         <span class="time-left">2021/01/01</span>
       </div>
     </div>
-    <div align="center" style="padding-top: 20px;">
+    <div align="center" style="padding-top: 20px;max-width: 80%;padding-left: 10%;">
       <table>
         <tr>
-          <td><img src="img/sy2/sy2-4.jpg" style="width: 500px; height: 770px;"></td>
-          <td><img src="img/sy2/sy2-5.jpg" style="width: 500px; height: 770px;"></td>
-          <td><img src="img/sy2/sy2-6.jpg" style="width: 500px; height: 770px;"></td>
+          <td><img src="img/sy2/sy2-4.jpg" style="width: 500px;height: 770px;"></td>
+          <td><img src="img/sy2/sy2-5.jpg" style="width: 500px;height: 770px;"></td>
+          <td><img src="img/sy2/sy2-6.jpg" style="width: 500px;height: 770px;"></td>
         </tr>
       </table>
     </div>
@@ -838,7 +823,9 @@
       }
     }
   </script>
-
+  <script defer src="/your-path-to-fontawesome/js/brands.js"></script>
+  <script defer src="/your-path-to-fontawesome/js/solid.js"></script>
+  <script defer src="/your-path-to-fontawesome/js/fontawesome.js"></script>
 </body>
 
 </html>
